@@ -20,9 +20,9 @@
       </svg>
     </a>
     <h1>Log In</h1>
-    <form action="/login" th:method="POST" th:object="${loginRequest}">
+    <form action="/login" method="POST">
       <div class="form-group">
-        <label th:field="*{}" for="username">Username</label>
+        <label for="username">Username</label>
         <input type="text" id="username" placeholder="Enter your username" required>
       </div>
 
@@ -36,7 +36,7 @@
 
       <div class="form-divider"></div>
       <button type="submit" class="btn-primary">Log In</button>
-      <p class="switch-link">Don’t have an account? <a href="">Create one</a></p>
+      <p class="switch-link">Don’t have an account? <a href="/register">Create one</a></p>
     </form>
 
   </div>
