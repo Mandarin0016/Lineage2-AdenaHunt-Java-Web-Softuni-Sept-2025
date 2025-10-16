@@ -14,7 +14,7 @@
     <div class="zone-actions">
         <div class="player-adena">
             <img src="/images/adena-icon.png" alt="Adena">
-            <span>4,720</span>
+            <span th:text="${playerAdena}">4,720</span>
         </div>
         <a href="/lobby" class="btn exit-zone">Exit Zone</a>
         <a href="/logout" class="btn logout">Logout</a>
@@ -26,111 +26,41 @@
     <div class="mob-row">
         <h3 class="mob-row-title">Mobs Level 1–10</h3>
         <div class="mob-scroll-container">
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/gremlin.png" alt="Gremlin"/>
+            <div class="mob-entry" th:each="mob : ${mobs}" th:if="${mob.level >= 1 and mob.level <= 10}">
+                <img class="mob-image" th:src="${mob.imageUrl}" alt="Gremlin"/>
                 <div class="mob-info">
                     <div class="mob-header">
-                        <span class="mob-name">Gremlin</span>
-                        <span class="mob-level">Lv2</span>
-                        <span class="mob-type-tag common">Common</span>
-<!--                        <span class="mob-type-tag blue">Blue Champion</span>-->
-<!--                        <span class="mob-type-tag red">Red Champion</span>-->
+                        <span class="mob-name" th:text="${mob.name}">Gremlin</span>
+                        <span class="mob-level" th:text="${'Lv' + mob.level}">Lv2</span>
+                        <span class="mob-type-tag common" th:if="${mob.type.name() == 'COMMON'}">Common</span>
+                        <span class="mob-type-tag blue" th:if="${mob.type.name() == 'BLUE_CHAMPION'}">Blue Champion</span>
+                        <span class="mob-type-tag red" th:if="${mob.type.name() == 'RED_CHAMPION'}">Red Champion</span>
                     </div>
                     <div class="mob-meta">
-                        <span class="spawn-time">10:02:14</span>
-                        <span class="mob-area-tag">Talking Island</span>
-                        <span class="mob-status defeated">Defeated</span>
-<!--                        <span class="mob-status alive">Alive</span>-->
+                        <span class="spawn-time" th:text="${#temporals.format(mob.createdOn, 'HH:mm:ss')}">10:02:14</span>
+                        <span class="mob-area-tag" th:text="${mob.spawnArea}">Talking Island</span>
+                        <span class="mob-status defeated" th:unless="${mob.alive}">Defeated</span>
+                        <span class="mob-status alive" th:if="${mob.alive}">Alive</span>
                     </div>
                     <div class="mob-stats">
-                        <span>Health: <strong>170</strong></span>
-                        <span>Attack: <strong>45</strong></span>
-                        <span>Defense: <strong>15</strong></span>
+                        <span>Health: <strong th:text="${#numbers.formatDecimal(mob.health, 1, 0)}">170</strong></span>
+                        <span>Attack: <strong th:text="${#numbers.formatDecimal(mob.attack, 1, 0)}">45</strong></span>
+                        <span>Defense: <strong th:text="${#numbers.formatDecimal(mob.defense, 1, 0)}">15</strong></span>
                     </div>
                     <div class="mob-drop">
                         <div class="drop-item">
                             <img src="/images/adena-icon.png" alt="Adena"/>
-                            <span>12</span>
+                            <span th:text="${mob.adenaDrop}">12</span>
                         </div>
                         <div class="drop-item">
                             <img src="/images/xp-booster-icon.png" alt="XP"/>
-                            <span>18 XP</span>
+                            <span th:text="${mob.xpDrop + ' XP'}">18 XP</span>
                         </div>
                     </div>
-                    <div class="mob-description">A weak, mischievous forest creature.</div>
-                    <form class="attack-button-form" action="" method="post">
-                        <button type="submit" class="btn defeated-mob-btn" disabled>Defeated</button>
-<!--                        <button type="submit" class="btn">Attack</button>-->
-                    </form>
-                </div>
-            </div>
-
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/orc-commander.png" alt="Orc Commander"/>
-                <div class="mob-info">
-                    <div class="mob-header">
-                        <span class="mob-name">Orc Commander</span>
-                        <span class="mob-level">Lv4</span>
-                        <span class="mob-type-tag common">Common</span>
-                    </div>
-                    <div class="mob-meta">
-                        <span class="spawn-time">10:04:39</span>
-                        <span class="mob-area-tag">Orc Barracks</span>
-                        <span class="mob-status alive">Alive</span>
-                    </div>
-                    <div class="mob-stats">
-                        <span>Health: <strong>420</strong></span>
-                        <span>Attack: <strong>80</strong></span>
-                        <span>Defense: <strong>35</strong></span>
-                    </div>
-                    <div class="mob-drop">
-                        <div class="drop-item">
-                            <img src="/images/adena-icon.png" alt="Adena"/>
-                            <span>20</span>
-                        </div>
-                        <div class="drop-item">
-                            <img src="/images/xp-booster-icon.png" alt="XP"/>
-                            <span>33 XP</span>
-                        </div>
-                    </div>
-                    <div class="mob-description">A battle-hardened orc leader.</div>
-                    <form class="attack-button-form" action="" method="post">
-                        <button type="submit" class="btn">Attack</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/nephilim-warrior.png" alt="Nephilim Warrior"/>
-                <div class="mob-info">
-                    <div class="mob-header">
-                        <span class="mob-name">Nephilim Warrior</span>
-                        <span class="mob-level">Lv9</span>
-                        <span class="mob-type-tag blue">Blue Champion</span>
-                    </div>
-                    <div class="mob-meta">
-                        <span class="spawn-time">10:09:03</span>
-                        <span class="mob-area-tag">Seed of Infinity</span>
-                        <span class="mob-status alive">Alive</span>
-                    </div>
-                    <div class="mob-stats">
-                        <span>Health: <strong>1,600</strong></span>
-                        <span>Attack: <strong>220</strong></span>
-                        <span>Defense: <strong>75</strong></span>
-                    </div>
-                    <div class="mob-drop">
-                        <div class="drop-item">
-                            <img src="/images/adena-icon.png" alt="Adena"/>
-                            <span>48</span>
-                        </div>
-                        <div class="drop-item">
-                            <img src="/images/xp-booster-icon.png" alt="XP"/>
-                            <span>72 XP</span>
-                        </div>
-                    </div>
-                    <div class="mob-description">An ancient winged warrior of light.</div>
-                    <form class="attack-button-form" action="" method="post">
-                        <button type="submit" class="btn">Attack</button>
+                    <div class="mob-description" th:text="${mob.description}">A weak, mischievous forest creature.</div>
+                    <form class="attack-button-form" th:action="@{'/mobs/' + ${mob.id}}" th:method="PATCH">
+                        <button type="submit" class="btn defeated-mob-btn" th:unless="${mob.alive}" disabled>Defeated</button>
+                        <button type="submit" class="btn" th:if="${mob.alive}">Attack</button>
                     </form>
                 </div>
             </div>
@@ -140,108 +70,41 @@
     <div class="mob-row">
         <h3 class="mob-row-title">Mobs Level 11–20</h3>
         <div class="mob-scroll-container">
-
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/varka-warrior.png" alt="Varka Silenos Warrior"/>
+            <div class="mob-entry" th:each="mob : ${mobs}" th:if="${mob.level >= 11 and mob.level <= 20}">
+                <img class="mob-image" th:src="${mob.imageUrl}" alt="Gremlin"/>
                 <div class="mob-info">
                     <div class="mob-header">
-                        <span class="mob-name">Varka Silenos Warrior</span>
-                        <span class="mob-level">Lv14</span>
-                        <span class="mob-type-tag common">Common</span>
+                        <span class="mob-name" th:text="${mob.name}">Gremlin</span>
+                        <span class="mob-level" th:text="${'Lv' + mob.level}">Lv2</span>
+                        <span class="mob-type-tag common" th:if="${mob.type.name() == 'COMMON'}">Common</span>
+                        <span class="mob-type-tag blue" th:if="${mob.type.name() == 'BLUE_CHAMPION'}">Blue Champion</span>
+                        <span class="mob-type-tag red" th:if="${mob.type.name() == 'RED_CHAMPION'}">Red Champion</span>
                     </div>
                     <div class="mob-meta">
-                        <span class="spawn-time">10:13:32</span>
-                        <span class="mob-area-tag">Varka Stronghold</span>
-                        <span class="mob-status defeated">Defeated</span>
+                        <span class="spawn-time" th:text="${#temporals.format(mob.createdOn, 'HH:mm:ss')}">10:02:14</span>
+                        <span class="mob-area-tag" th:text="${mob.spawnArea}">Talking Island</span>
+                        <span class="mob-status defeated" th:unless="${mob.alive}">Defeated</span>
+                        <span class="mob-status alive" th:if="${mob.alive}">Alive</span>
                     </div>
                     <div class="mob-stats">
-                        <span>Health: <strong>3,300</strong></span>
-                        <span>Attack: <strong>365</strong></span>
-                        <span>Defense: <strong>130</strong></span>
+                        <span>Health: <strong th:text="${#numbers.formatDecimal(mob.health, 1, 0)}">170</strong></span>
+                        <span>Attack: <strong th:text="${#numbers.formatDecimal(mob.attack, 1, 0)}">45</strong></span>
+                        <span>Defense: <strong th:text="${#numbers.formatDecimal(mob.defense, 1, 0)}">15</strong></span>
                     </div>
                     <div class="mob-drop">
                         <div class="drop-item">
                             <img src="/images/adena-icon.png" alt="Adena"/>
-                            <span>64</span>
+                            <span th:text="${mob.adenaDrop}">12</span>
                         </div>
                         <div class="drop-item">
                             <img src="/images/xp-booster-icon.png" alt="XP"/>
-                            <span>108 XP</span>
+                            <span th:text="${mob.xpDrop + ' XP'}">18 XP</span>
                         </div>
                     </div>
-                    <div class="mob-description">A tribal soldier of the Varka.</div>
-                    <form class="attack-button-form" action="" method="post">
-                        <button type="submit" class="btn defeated-mob-btn" disabled>Defeated</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/tanta-lizardman.png" alt="Tanta Lizardman"/>
-                <div class="mob-info">
-                    <div class="mob-header">
-                        <span class="mob-name">Tanta Lizardman</span>
-                        <span class="mob-level">Lv16</span>
-                        <span class="mob-type-tag red">Red Champion</span>
-                    </div>
-                    <div class="mob-meta">
-                        <span class="spawn-time">10:15:00</span>
-                        <span class="mob-area-tag">Forge of the Gods</span>
-                        <span class="mob-status alive">Alive</span>
-                    </div>
-                    <div class="mob-stats">
-                        <span>Health: <strong>4,600</strong></span>
-                        <span>Attack: <strong>430</strong></span>
-                        <span>Defense: <strong>155</strong></span>
-                    </div>
-                    <div class="mob-drop">
-                        <div class="drop-item">
-                            <img src="/images/adena-icon.png" alt="Adena"/>
-                            <span>72</span>
-                        </div>
-                        <div class="drop-item">
-                            <img src="/images/xp-booster-icon.png" alt="XP"/>
-                            <span>122 XP</span>
-                        </div>
-                    </div>
-                    <div class="mob-description">A cunning desert serpent warrior.</div>
-                    <form class="attack-button-form" action="" method="post">
-                        <button type="submit" class="btn">Attack</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/isadora.png" alt="Isadora"/>
-                <div class="mob-info">
-                    <div class="mob-header">
-                        <span class="mob-name">Isadora</span>
-                        <span class="mob-level">Lv18</span>
-                        <span class="mob-type-tag blue">Blue Champion</span>
-                    </div>
-                    <div class="mob-meta">
-                        <span class="spawn-time">10:17:18</span>
-                        <span class="mob-area-tag">Catacomb of the Witch</span>
-                        <span class="mob-status alive">Alive</span>
-                    </div>
-                    <div class="mob-stats">
-                        <span>Health: <strong>5,200</strong></span>
-                        <span>Attack: <strong>490</strong></span>
-                        <span>Defense: <strong>160</strong></span>
-                    </div>
-                    <div class="mob-drop">
-                        <div class="drop-item">
-                            <img src="/images/adena-icon.png" alt="Adena"/>
-                            <span>79</span>
-                        </div>
-                        <div class="drop-item">
-                            <img src="/images/xp-booster-icon.png" alt="XP"/>
-                            <span>134 XP</span>
-                        </div>
-                    </div>
-                    <div class="mob-description">A ghostly lady of powerful magic.</div>
-                    <form class="attack-button-form" action="" method="post">
-                        <button type="submit" class="btn">Attack</button>
+                    <div class="mob-description" th:text="${mob.description}">A weak, mischievous forest creature.</div>
+                    <form class="attack-button-form" th:action="@{'/mobs/' + ${mob.id}}" th:method="PATCH">
+                        <button type="submit" class="btn defeated-mob-btn" th:unless="${mob.alive}" disabled>Defeated</button>
+                        <button type="submit" class="btn" th:if="${mob.alive}">Attack</button>
                     </form>
                 </div>
             </div>
@@ -262,22 +125,22 @@
         <h3 class="modal-title">Fight Result</h3>
 
         <!-- Victory or Loss badge -->
-        <div class="fight-outcome-badge victory">Victory</div>
+        <div class="fight-outcome-badge victory" th:if="${fightResult.outcome.name() == 'PLAYER_WIN'}">Victory</div>
         <!-- or -->
-        <!--     <div class="fight-outcome-badge loss">Loss</div>-->
+        <div class="fight-outcome-badge loss" th:if="${fightResult.outcome.name() == 'MOB_WIN'}">Loss</div>
 
         <div class="fight-summary">
             <div class="summary-row">
                 <span class="label">Mob:</span>
-                <span class="value">Tanta Lizardman (Lv8, Common)</span>
+                <span class="value" th:text="${fightResult.mobName}">Tanta Lizardman (Lv8, Common)</span>
             </div>
             <div class="summary-row">
                 <span class="label">Adena Gained:</span>
-                <span class="value">87</span>
+                <span class="value" th:text="${fightResult.xpEarned}">87</span>
             </div>
             <div class="summary-row">
                 <span class="label">XP Gained:</span>
-                <span class="value">150</span>
+                <span class="value" th:text="${fightResult.adenaEarned}">150</span>
             </div>
         </div>
     </div>

@@ -20,16 +20,16 @@
       </svg>
     </a>
     <h1>Log In</h1>
-    <form action="/login" method="POST">
+    <form action="/login" method="POST" th:object="${loginRequest}">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username" required>
+        <input th:field="*{username}" type="text" id="username" placeholder="Enter your username" required>
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
         <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Enter your password" required>
+          <input th:field="*{password}" type="password" id="password" placeholder="Enter your password" required>
           <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()" id="toggleIcon"></i>
         </div>
       </div>

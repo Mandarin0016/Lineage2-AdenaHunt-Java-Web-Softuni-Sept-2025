@@ -14,9 +14,9 @@
 <header>
     <div class="player-adena">
         <img src="/images/adena-icon.png" alt="Adena">
-        <span>4,720</span>
+        <span th:text="${player.adena}">4,720</span>
     </div>
-    <a href="" class="logout-button">Logout</a>
+    <a href="/logout" class="logout-button">Logout</a>
 </header>
 
 <main class="main-content">
@@ -25,32 +25,28 @@
     <section class="panel player-card">
 
         <div class="player-name-level-wrapper">
-            <div class="player-nickname">Hello, Mandarin!</div>
-            <div class="player-level">17 Lv</div>
+            <div class="player-nickname" th:text="${'Hello, ' + player.nickname + '!'}">Hello, Mandarin!</div>
+            <div class="player-level" th:text="${player.level + ' Lv'}">17 Lv</div>
         </div>
 
         <!-- Player Info -->
         <div class="player-info">
             <div class="card-header">
                 <div class="image-wrapper">
-                    <img class="class-image" src="/images/classes/storm-screamer-class-banner.jpeg" />
-                    <div class="class-name">Storm Screamer</div>
+                    <img class="class-image" th:src="${player.bannerImg}" />
+                    <div class="class-name" th:text="${player.playerClass.getDisplayName()}">Storm Screamer</div>
                 </div>
             </div>
             <ul class="class-stats">
-                <li><span>Health</span><div class="stat">17895</div></li>
-                <li><span>Attack</span><div class="stat">653</div></li>
-                <li><span>Defense</span><div class="stat">785</div></li>
+                <li><span>Health</span><div class="stat" th:text="${#numbers.formatDecimal(player.health, 1, 2)}">17895</div></li>
+                <li><span>Attack</span><div class="stat" th:text="${#numbers.formatDecimal(player.attack, 1, 2)}">653</div></li>
+                <li><span>Defense</span><div class="stat" th:text="${#numbers.formatDecimal(player.defense, 1, 2)}">785</div></li>
             </ul>
             <div class="class-abilities">
                 <div class="abilities-label">Booster Abilities</div>
-                <div class="class-ability">
-                    <img src="/images/xp-booster-icon.png" alt="XP Icon">
-                    <span>+5% XP Gain</span>
-                </div>
-                <div class="class-ability">
-                    <img src="/images/magic-attack-icon.png" alt="Attack Icon">
-                    <span>+15% Attack</span>
+                <div class="class-ability" th:each="booster : ${boosters}">
+                    <img th:src="${booster.icon}" alt="XP Icon">
+                    <span th:text="${booster.name}">+5% XP Gain</span>
                 </div>
             </div>
             <div class="description">
@@ -66,54 +62,43 @@
             <h3 class="section-title">Your Party</h3>
             <div class="party-content">
                 <!-- WHEN THE PLAYER HAS PARTY -->
-                <div class="party-members">
+                <div th:if="${player.party != null}" class="party-members">
                     <div class="party-member-card leader">
-                        <img class="party-banner" src="/images/classes/storm-screamer-class-banner.jpeg" />
+                        <img class="party-banner" th:src="${player.party.leader.bannerImg}" />
                         <div class="party-info">
-                            <div class="party-nickname">Mandarin</div>
-                            <div class="party-level">Lv 17</div>
-                            <div class="party-adena">Adena: 12,540</div>
+                            <div class="party-nickname" th:text="${player.party.leader.nickname}">Mandarin</div>
+                            <div class="party-level" th:text="${'Lv ' + player.party.leader.level}">Lv 17</div>
+                            <div class="party-adena" th:text="${'Adena: ' + player.party.leader.adena}">Adena: 12,540</div>
                         </div>
                         <div class="party-role-tag leader">Party Leader</div>
                     </div>
-                    <div class="party-member-card">
-                        <img class="party-banner" src="/images/classes/dreadnought-class-banner.jpeg" />
+                    <div class="party-member-card" th:each="member : ${partyMembers}" th:if="${member.id != player.party.leader.id}">
+                        <img class="party-banner" th:src="${member.bannerImg}" />
                         <div class="party-info">
-                            <div class="party-nickname">Kratos</div>
-                            <div class="party-level">Lv 15</div>
-                            <div class="party-adena">Adena: 8,220</div>
-                        </div>
-                        <div class="party-role-tag">Party Member</div>
-                    </div>
-                    <div class="party-member-card">
-                        <img class="party-banner" src="/images/classes/moonlight-sentinel-banner.jpeg" />
-                        <div class="party-info">
-                            <div>
-                                <div class="party-nickname">Leona</div>
-                                <div class="party-level">Lv 27</div>
-                                <div class="party-adena">Adena: 9,109</div>
-                            </div>
+                            <div class="party-nickname" th:text="${member.nickname}">Kratos</div>
+                            <div class="party-level" th:text="${'Lv ' + member.level}">Lv 15</div>
+                            <div class="party-adena" th:text="${'Adena: ' + member.adena}">Adena: 8,220</div>
                         </div>
                         <div class="party-role-tag">Party Member</div>
                     </div>
                 </div>
 
                 <!-- WHEN THE PLAYER HAS NO PARTY -->
-<!--                <div class="party-empty">-->
-<!--                    <div class="party-empty-text">-->
-<!--                        <ol class="party-rules">-->
-<!--                            <li>A party can have up to <strong>3 players</strong>: 1 Party Leader and 2 Party Members.</li>-->
-<!--                            <li>A party is automatically formed when you invite another player.</li>-->
-<!--                            <li>The player who invites others becomes the <strong>Party Leader</strong>.</li>-->
-<!--                            <li>Any member can dismiss the party, which disbands it for everyone.</li>-->
-<!--                            <li>Players not in a party can receive or send invites at any time.</li>-->
-<!--                        </ol>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div th:if="${player.party == null}" class="party-empty">
+                    <div class="party-empty-text">
+                        <ol class="party-rules">
+                            <li>A party can have up to <strong>3 players</strong>: 1 Party Leader and 2 Party Members.</li>
+                            <li>A party is automatically formed when you invite another player.</li>
+                            <li>The player who invites others becomes the <strong>Party Leader</strong>.</li>
+                            <li>Any member can dismiss the party, which disbands it for everyone.</li>
+                            <li>Players not in a party can receive or send invites at any time.</li>
+                        </ol>
+                    </div>
+                </div>
 
                 <div class="party-actions">
-                    <button class="btn invite" onclick="openInviteModal()">Invite Player</button>
-                    <form class="party-action-form" action="">
+                    <button th:if="${partyMembers.size() < 3}" class="btn invite" onclick="openInviteModal()">Invite Player</button>
+                    <form th:if="${player.party != null}" class="party-action-form" th:action="@{'/party/' + ${player.party.id}}" th:method="DELETE">
                         <button class="btn dismiss">Dismiss Party</button>
                     </form>
                 </div>
@@ -121,110 +106,47 @@
         </div>
 
         <div class="farm-box">
-            <a href="" class="btn enter-farm"><span>Enter Farm Zone</span></a>
+            <a href="/farm-zone" class="btn enter-farm"><span>Enter Farm Zone</span></a>
         </div>
     </div>
 
     <!-- Mob Spawn Log -->
     <section class="panel">
         <div class="mob-log-container">
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/isadora.png" />
+            <div class="mob-entry" th:each="mob : ${mobs}">
+                <img class="mob-image" th:src="${mob.imageUrl}" />
                 <div class="mob-info">
                     <div class="mob-header">
-                        <span class="mob-name">Isadora</span>
-                        <span class="mob-level">Lv18</span>
-                        <span class="mob-type-tag common">Common</span>
+                        <span class="mob-name" th:text="${mob.name}">Isadora</span>
+                        <span class="mob-level" th:text="${'Lv' + mob.level}">Lv18</span>
+                        <span th:if="${mob.type.name() == 'COMMON'}" class="mob-type-tag common">Common</span>
+                        <span th:if="${mob.type.name() == 'BLUE_CHAMPION'}" class="mob-type-tag blue">Blue Champion</span>
+                        <span th:if="${mob.type.name() == 'RED_CHAMPION'}" class="mob-type-tag red">Red Champion</span>
                     </div>
                     <div class="mob-meta">
-                        <span class="spawn-time">10:05:01</span>
-                        <span class="mob-area-tag">Talking Island</span>
+                        <span class="spawn-time" th:text="${#temporals.format(mob.createdOn, 'HH:mm:ss')}">10:05:01</span>
+                        <span class="mob-area-tag" th:text="${mob.spawnArea}">Talking Island</span>
                     </div>
                     <div class="mob-stats">
-                        <span>Health: <strong>1,230</strong></span>
-                        <span>Attack: <strong>325</strong></span>
-                        <span>Defense: <strong>215</strong></span>
+                        <span>Health: <strong th:text="${#numbers.formatDecimal(mob.health, 1, 2)}">1,230</strong></span>
+                        <span>Attack: <strong th:text="${#numbers.formatDecimal(mob.attack, 1, 2)}">325</strong></span>
+                        <span>Defense: <strong th:text="${#numbers.formatDecimal(mob.defense, 1, 2)}">215</strong></span>
                     </div>
                     <div class="mob-drop">
                         <div class="drop-item">
                             <img src="/images/adena-icon.png" alt="Adena" />
-                            <span>56</span>
+                            <span th:text="${mob.adenaDrop}">56</span>
                         </div>
                         <div class="drop-item">
                             <img src="/images/xp-booster-icon.png" alt="XP" />
-                            <span>120 XP</span>
+                            <span th:text="${mob.xpDrop + ' XP'}">120 XP</span>
                         </div>
                     </div>
-                    <div class="mob-description">
+                    <div class="mob-description" th:text="${mob.description}">
                         A ghostly lady of powerful magic.
                     </div>
                 </div>
             </div>
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/tanta-lizardman.png" />
-                <div class="mob-info">
-                    <div class="mob-header">
-                        <span class="mob-name">Tanta Lizardman</span>
-                        <span class="mob-level">Lv5</span>
-                        <span class="mob-type-tag common">Common</span>
-                    </div>
-                    <div class="mob-meta">
-                        <span class="spawn-time">10:05:01</span>
-                        <span class="mob-area-tag">Talking Island</span>
-                    </div>
-                    <div class="mob-stats">
-                        <span>Health: <strong>1,230</strong></span>
-                        <span>Attack: <strong>325</strong></span>
-                        <span>Defense: <strong>215</strong></span>
-                    </div>
-                    <div class="mob-drop">
-                        <div class="drop-item">
-                            <img src="/images/adena-icon.png" alt="Adena" />
-                            <span>56</span>
-                        </div>
-                        <div class="drop-item">
-                            <img src="/images/xp-booster-icon.png" alt="XP" />
-                            <span>120 XP</span>
-                        </div>
-                    </div>
-                    <div class="mob-description">
-                        A cunning desert serpent warrior.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Repeat for more mobs -->
-            <div class="mob-entry">
-                <img class="mob-image" src="/images/mobs/buffalo.png" />
-                <div class="mob-info">
-                    <div class="mob-header">
-                        <span class="mob-name">Buffalo</span>
-                        <span class="mob-level">Lv9</span>
-                        <span class="mob-type-tag blue">Blue Champion</span>
-                    </div>
-                    <div class="mob-meta">
-                        <span class="spawn-time">10:03:27</span>
-                        <span class="mob-area-tag">Cruma Tower</span>
-                    </div>
-                    <div class="mob-stats">
-                        <span>Health: <strong>2,500</strong></span>
-                        <span>Attack: <strong>510</strong></span>
-                        <span>Defense: <strong>310</strong></span>
-                    </div>
-                    <div class="mob-drop">
-                        <div class="drop-item">
-                            <img src="/images/adena-icon.png" alt="Adena" />
-                            <span>132</span>
-                        </div>
-                        <div class="drop-item">
-                            <img src="/images/xp-booster-icon.png" alt="XP" />
-                            <span>340 XP</span>
-                        </div>
-                    </div>
-                    <div class="mob-description">
-                        A wild, charging farm creature.
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -242,63 +164,18 @@
         <h3 class="modal-title">System Players</h3>
 
         <div class="invite-player-list">
-            <div class="invite-player-entry">
-                <img class="invite-player-banner" src="/images/classes/moonlight-sentinel-banner.jpeg"/>
+            <div class="invite-player-entry" th:each="currentPlayer : ${freePlayers}">
+                <img class="invite-player-banner" th:src="${currentPlayer.bannerImg}"/>
                 <div class="invite-player-info">
-                    <div class="invite-player-nickname">Leona</div>
-                    <div class="invite-player-meta">Lv 27 </div>
-                    <div class="invite-player-meta">Adena: 9,109</div>
+                    <div class="invite-player-nickname" th:text="${currentPlayer.nickname}">Leona</div>
+                    <div class="invite-player-meta" th:text="${'Lv ' + currentPlayer.level}">Lv 27 </div>
+                    <div class="invite-player-meta" th:text="${'Adena: ' + currentPlayer.adena}">Adena: 9,109</div>
                     <div class="invite-player-class">
                         <span class="invite-player-class-label">Class:</span>
-                        <span>Moonlight Sentinel</span>
+                        <span th:text="${currentPlayer.playerClass.getDisplayName()}">Moonlight Sentinel</span>
                     </div>
                 </div>
-                <form class="invite-player-form" action="" method="post">
-                    <button type="submit" class="btn invite-btn">Invite</button>
-                </form>
-            </div>
-            <div class="invite-player-entry">
-                <img class="invite-player-banner" src="/images/classes/trickster-class-banner.png"/>
-                <div class="invite-player-info">
-                    <div class="invite-player-nickname">Mandarin</div>
-                    <div class="invite-player-meta">Lv 13</div>
-                    <div class="invite-player-meta">Adena: 1,991</div>
-                    <div class="invite-player-class">
-                        <span class="invite-player-class-label">Class:</span>
-                        <span>Trickster</span>
-                    </div>
-                </div>
-                <form class="invite-player-form" action="" method="post">
-                    <button type="submit" class="btn invite-btn">Invite</button>
-                </form>
-            </div>
-            <div class="invite-player-entry">
-                <img class="invite-player-banner" src="/images/classes/phoenix-knight-class-banner.jpeg"/>
-                <div class="invite-player-info">
-                    <div class="invite-player-nickname">Dafny</div>
-                    <div class="invite-player-meta">Lv 13</div>
-                    <div class="invite-player-meta">Adena: 109</div>
-                    <div class="invite-player-class">
-                        <span class="invite-player-class-label">Class:</span>
-                        <span>Phoenix Knight</span>
-                    </div>
-                </div>
-                <form class="invite-player-form" action="" method="post">
-                    <button type="submit" class="btn invite-btn">Invite</button>
-                </form>
-            </div>
-            <div class="invite-player-entry">
-                <img class="invite-player-banner" src="/images/classes/storm-screamer-class-banner.jpeg" />
-                <div class="invite-player-info">
-                    <div class="invite-player-nickname">Marcie</div>
-                    <div class="invite-player-meta">Lv 85</div>
-                    <div class="invite-player-meta">Adena: 679,110</div>
-                    <div class="invite-player-class">
-                        <span class="invite-player-class-label">Class:</span>
-                        <span>Storm Screamer</span>
-                    </div>
-                </div>
-                <form class="invite-player-form" action="" method="post">
+                <form class="invite-player-form" th:action="@{'/party?receiverId=' + ${currentPlayer.id}}" method="post">
                     <button type="submit" class="btn invite-btn">Invite</button>
                 </form>
             </div>
