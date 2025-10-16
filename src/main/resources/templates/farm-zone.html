@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Farm Zone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/farm-zone.css">
+</head>
+<body>
+
+<header class="farm-zone-header">
+    <div class="zone-actions">
+        <div class="player-adena">
+            <img src="/images/adena-icon.png" alt="Adena">
+            <span>4,720</span>
+        </div>
+        <a href="/lobby" class="btn exit-zone">Exit Zone</a>
+        <a href="/logout" class="btn logout">Logout</a>
+    </div>
+</header>
+
+<section class="farm-zone">
+
+    <div class="mob-row">
+        <h3 class="mob-row-title">Mobs Level 1–10</h3>
+        <div class="mob-scroll-container">
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/gremlin.png" alt="Gremlin"/>
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Gremlin</span>
+                        <span class="mob-level">Lv2</span>
+                        <span class="mob-type-tag common">Common</span>
+<!--                        <span class="mob-type-tag blue">Blue Champion</span>-->
+<!--                        <span class="mob-type-tag red">Red Champion</span>-->
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:02:14</span>
+                        <span class="mob-area-tag">Talking Island</span>
+                        <span class="mob-status defeated">Defeated</span>
+<!--                        <span class="mob-status alive">Alive</span>-->
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>170</strong></span>
+                        <span>Attack: <strong>45</strong></span>
+                        <span>Defense: <strong>15</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena"/>
+                            <span>12</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP"/>
+                            <span>18 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">A weak, mischievous forest creature.</div>
+                    <form class="attack-button-form" action="" method="post">
+                        <button type="submit" class="btn defeated-mob-btn" disabled>Defeated</button>
+<!--                        <button type="submit" class="btn">Attack</button>-->
+                    </form>
+                </div>
+            </div>
+
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/orc-commander.png" alt="Orc Commander"/>
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Orc Commander</span>
+                        <span class="mob-level">Lv4</span>
+                        <span class="mob-type-tag common">Common</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:04:39</span>
+                        <span class="mob-area-tag">Orc Barracks</span>
+                        <span class="mob-status alive">Alive</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>420</strong></span>
+                        <span>Attack: <strong>80</strong></span>
+                        <span>Defense: <strong>35</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena"/>
+                            <span>20</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP"/>
+                            <span>33 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">A battle-hardened orc leader.</div>
+                    <form class="attack-button-form" action="" method="post">
+                        <button type="submit" class="btn">Attack</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/nephilim-warrior.png" alt="Nephilim Warrior"/>
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Nephilim Warrior</span>
+                        <span class="mob-level">Lv9</span>
+                        <span class="mob-type-tag blue">Blue Champion</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:09:03</span>
+                        <span class="mob-area-tag">Seed of Infinity</span>
+                        <span class="mob-status alive">Alive</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>1,600</strong></span>
+                        <span>Attack: <strong>220</strong></span>
+                        <span>Defense: <strong>75</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena"/>
+                            <span>48</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP"/>
+                            <span>72 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">An ancient winged warrior of light.</div>
+                    <form class="attack-button-form" action="" method="post">
+                        <button type="submit" class="btn">Attack</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mob-row">
+        <h3 class="mob-row-title">Mobs Level 11–20</h3>
+        <div class="mob-scroll-container">
+
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/varka-warrior.png" alt="Varka Silenos Warrior"/>
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Varka Silenos Warrior</span>
+                        <span class="mob-level">Lv14</span>
+                        <span class="mob-type-tag common">Common</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:13:32</span>
+                        <span class="mob-area-tag">Varka Stronghold</span>
+                        <span class="mob-status defeated">Defeated</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>3,300</strong></span>
+                        <span>Attack: <strong>365</strong></span>
+                        <span>Defense: <strong>130</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena"/>
+                            <span>64</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP"/>
+                            <span>108 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">A tribal soldier of the Varka.</div>
+                    <form class="attack-button-form" action="" method="post">
+                        <button type="submit" class="btn defeated-mob-btn" disabled>Defeated</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/tanta-lizardman.png" alt="Tanta Lizardman"/>
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Tanta Lizardman</span>
+                        <span class="mob-level">Lv16</span>
+                        <span class="mob-type-tag red">Red Champion</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:15:00</span>
+                        <span class="mob-area-tag">Forge of the Gods</span>
+                        <span class="mob-status alive">Alive</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>4,600</strong></span>
+                        <span>Attack: <strong>430</strong></span>
+                        <span>Defense: <strong>155</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena"/>
+                            <span>72</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP"/>
+                            <span>122 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">A cunning desert serpent warrior.</div>
+                    <form class="attack-button-form" action="" method="post">
+                        <button type="submit" class="btn">Attack</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/isadora.png" alt="Isadora"/>
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Isadora</span>
+                        <span class="mob-level">Lv18</span>
+                        <span class="mob-type-tag blue">Blue Champion</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:17:18</span>
+                        <span class="mob-area-tag">Catacomb of the Witch</span>
+                        <span class="mob-status alive">Alive</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>5,200</strong></span>
+                        <span>Attack: <strong>490</strong></span>
+                        <span>Defense: <strong>160</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena"/>
+                            <span>79</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP"/>
+                            <span>134 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">A ghostly lady of powerful magic.</div>
+                    <form class="attack-button-form" action="" method="post">
+                        <button type="submit" class="btn">Attack</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fight Result -->
+<div th:if="${fightResult}" id="fight-result-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="modal-title">Fight Result</h3>
+
+        <!-- Victory or Loss badge -->
+        <div class="fight-outcome-badge victory">Victory</div>
+        <!-- or -->
+        <!--     <div class="fight-outcome-badge loss">Loss</div>-->
+
+        <div class="fight-summary">
+            <div class="summary-row">
+                <span class="label">Mob:</span>
+                <span class="value">Tanta Lizardman (Lv8, Common)</span>
+            </div>
+            <div class="summary-row">
+                <span class="label">Adena Gained:</span>
+                <span class="value">87</span>
+            </div>
+            <div class="summary-row">
+                <span class="label">XP Gained:</span>
+                <span class="value">150</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+<script>
+    function closeModal() {
+      document.getElementById('fight-result-modal').classList.add('hidden');
+    }
+</script>
+
+</body>
+</html>

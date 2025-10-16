@@ -1,0 +1,110 @@
+mobs:
+  - name: "Gremlin"
+    levelRange: [1,4]
+    spawnArea: "Talking Island"
+    description: "A weak, mischievous forest creature."
+    image: "/images/mobs/gremlin.png"
+    healthFactor: 7.8
+    attackFactor: 11.25
+    defenseFactor: 5.0
+    adenaDrop: [10,20]
+    xpDrop: [15,27]
+
+  - name: "Orc Commander"
+    levelRange: [3,7]
+    spawnArea: "Orc Barracks"
+    description: "A battle-hardened orc leader."
+    image: "/images/mobs/orc-commander.png"
+    healthFactor: 10.5
+    attackFactor: 7.5
+    defenseFactor: 3.6
+    adenaDrop: [16,22]
+    xpDrop: [28,39]
+
+  - name: "Headless Knight"
+    levelRange: [5,7]
+    spawnArea: "Execution Grounds"
+    description: "A cursed warrior seeking vengeance."
+    image: "/images/mobs/headless-knight.png"
+    healthFactor: 40.77
+    attackFactor: 14.57
+    defenseFactor: 4.33
+    adenaDrop: [22,28]
+    xpDrop: [41,49]
+
+  - name: "Nephilim Warrior"
+    levelRange: [7,10]
+    spawnArea: "Seed of Infinity"
+    description: "An ancient winged warrior of light."
+    image: "/images/mobs/nephilim-warrior.png"
+    healthFactor: 50.85
+    attackFactor: 14.05
+    defenseFactor: 4.25
+    adenaDrop: [28,37]
+    xpDrop: [54,67]
+
+  - name: "Buffalo"
+    levelRange: [9,12]
+    spawnArea: "Beast Farm"
+    description: "A wild, charging farm creature."
+    image: "/images/mobs/buffalo.png"
+    healthFactor: 72.68
+    attackFactor: 17.88
+    defenseFactor: 4.2
+    adenaDrop: [35,46]
+    xpDrop: [67,82]
+
+  - name: "Frost Yeti"
+    levelRange: [11,14]
+    spawnArea: "Hot Springs"
+    description: "A shaggy beast from the cold north."
+    image: "/images/mobs/frost-yeti.png"
+    healthFactor: 94.25
+    attackFactor: 18.7
+    defenseFactor: 4.17
+    adenaDrop: [41,48]
+    xpDrop: [80,89]
+
+  - name: "Varka Warrior"
+    levelRange: [13,16]
+    spawnArea: "Varka Silenos Stronghold"
+    description: "A tribal soldier of the Varka."
+    image: "/images/mobs/varka-warrior.png"
+    healthFactor: 119.86
+    attackFactor: 19.56
+    defenseFactor: 4.14
+    adenaDrop: [47,55]
+    xpDrop: [93,102]
+
+  - name: "Tanta Lizardman"
+    levelRange: [15,18]
+    spawnArea: "Forge of the Gods"
+    description: "A cunning desert serpent warrior."
+    image: "/images/mobs/tanta-lizardman.png"
+    healthFactor: 150.11
+    attackFactor: 20.44
+    defenseFactor: 4.12
+    adenaDrop: [53,64]
+    xpDrop: [106,117]
+
+  - name: "Isadora"
+    levelRange: [17,20]
+    spawnArea: "Catacomb of the Witch"
+    description: "A ghostly lady of powerful magic."
+    image: "/images/mobs/isadora.png"
+    healthFactor: 185.17
+    attackFactor: 21.38
+    defenseFactor: 4.11
+    adenaDrop: [60,70]
+    xpDrop: [120,125]
+
+  - name: "Velociraptor"
+    levelRange: [20,20]
+    spawnArea: "Primeval Isle"
+    description: "A fast and deadly dinosaur predator."
+    image: "/images/mobs/velociraptor.png"
+    healthFactor: 219.49
+    attackFactor: 22.05
+    defenseFactor: 4.1
+    adenaDrop: [66,80]
+    xpDrop: [133,143]

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lobby</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/lobby.css">
+</head>
+<body>
+
+<header>
+    <div class="player-adena">
+        <img src="/images/adena-icon.png" alt="Adena">
+        <span>4,720</span>
+    </div>
+    <a href="" class="logout-button">Logout</a>
+</header>
+
+<main class="main-content">
+
+    <!-- Player Card -->
+    <section class="panel player-card">
+
+        <div class="player-name-level-wrapper">
+            <div class="player-nickname">Hello, Mandarin!</div>
+            <div class="player-level">17 Lv</div>
+        </div>
+
+        <!-- Player Info -->
+        <div class="player-info">
+            <div class="card-header">
+                <div class="image-wrapper">
+                    <img class="class-image" src="/images/classes/storm-screamer-class-banner.jpeg" />
+                    <div class="class-name">Storm Screamer</div>
+                </div>
+            </div>
+            <ul class="class-stats">
+                <li><span>Health</span><div class="stat">17895</div></li>
+                <li><span>Attack</span><div class="stat">653</div></li>
+                <li><span>Defense</span><div class="stat">785</div></li>
+            </ul>
+            <div class="class-abilities">
+                <div class="abilities-label">Booster Abilities</div>
+                <div class="class-ability">
+                    <img src="/images/xp-booster-icon.png" alt="XP Icon">
+                    <span>+5% XP Gain</span>
+                </div>
+                <div class="class-ability">
+                    <img src="/images/magic-attack-icon.png" alt="Attack Icon">
+                    <span>+15% Attack</span>
+                </div>
+            </div>
+            <div class="description">
+                Elite ranged class known for precision and mobility.
+            </div>
+        </div>
+    </section>
+
+    <!-- Party + Farm Zone -->
+    <!-- Party Panel with Members + Farm Zone -->
+    <div class="party-zone-panel panel">
+        <div class="party-box">
+            <h3 class="section-title">Your Party</h3>
+            <div class="party-content">
+                <!-- WHEN THE PLAYER HAS PARTY -->
+                <div class="party-members">
+                    <div class="party-member-card leader">
+                        <img class="party-banner" src="/images/classes/storm-screamer-class-banner.jpeg" />
+                        <div class="party-info">
+                            <div class="party-nickname">Mandarin</div>
+                            <div class="party-level">Lv 17</div>
+                            <div class="party-adena">Adena: 12,540</div>
+                        </div>
+                        <div class="party-role-tag leader">Party Leader</div>
+                    </div>
+                    <div class="party-member-card">
+                        <img class="party-banner" src="/images/classes/dreadnought-class-banner.jpeg" />
+                        <div class="party-info">
+                            <div class="party-nickname">Kratos</div>
+                            <div class="party-level">Lv 15</div>
+                            <div class="party-adena">Adena: 8,220</div>
+                        </div>
+                        <div class="party-role-tag">Party Member</div>
+                    </div>
+                    <div class="party-member-card">
+                        <img class="party-banner" src="/images/classes/moonlight-sentinel-banner.jpeg" />
+                        <div class="party-info">
+                            <div>
+                                <div class="party-nickname">Leona</div>
+                                <div class="party-level">Lv 27</div>
+                                <div class="party-adena">Adena: 9,109</div>
+                            </div>
+                        </div>
+                        <div class="party-role-tag">Party Member</div>
+                    </div>
+                </div>
+
+                <!-- WHEN THE PLAYER HAS NO PARTY -->
+<!--                <div class="party-empty">-->
+<!--                    <div class="party-empty-text">-->
+<!--                        <ol class="party-rules">-->
+<!--                            <li>A party can have up to <strong>3 players</strong>: 1 Party Leader and 2 Party Members.</li>-->
+<!--                            <li>A party is automatically formed when you invite another player.</li>-->
+<!--                            <li>The player who invites others becomes the <strong>Party Leader</strong>.</li>-->
+<!--                            <li>Any member can dismiss the party, which disbands it for everyone.</li>-->
+<!--                            <li>Players not in a party can receive or send invites at any time.</li>-->
+<!--                        </ol>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="party-actions">
+                    <button class="btn invite" onclick="openInviteModal()">Invite Player</button>
+                    <form class="party-action-form" action="">
+                        <button class="btn dismiss">Dismiss Party</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="farm-box">
+            <a href="" class="btn enter-farm"><span>Enter Farm Zone</span></a>
+        </div>
+    </div>
+
+    <!-- Mob Spawn Log -->
+    <section class="panel">
+        <div class="mob-log-container">
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/isadora.png" />
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Isadora</span>
+                        <span class="mob-level">Lv18</span>
+                        <span class="mob-type-tag common">Common</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:05:01</span>
+                        <span class="mob-area-tag">Talking Island</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>1,230</strong></span>
+                        <span>Attack: <strong>325</strong></span>
+                        <span>Defense: <strong>215</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena" />
+                            <span>56</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP" />
+                            <span>120 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">
+                        A ghostly lady of powerful magic.
+                    </div>
+                </div>
+            </div>
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/tanta-lizardman.png" />
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Tanta Lizardman</span>
+                        <span class="mob-level">Lv5</span>
+                        <span class="mob-type-tag common">Common</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:05:01</span>
+                        <span class="mob-area-tag">Talking Island</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>1,230</strong></span>
+                        <span>Attack: <strong>325</strong></span>
+                        <span>Defense: <strong>215</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena" />
+                            <span>56</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP" />
+                            <span>120 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">
+                        A cunning desert serpent warrior.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat for more mobs -->
+            <div class="mob-entry">
+                <img class="mob-image" src="/images/mobs/buffalo.png" />
+                <div class="mob-info">
+                    <div class="mob-header">
+                        <span class="mob-name">Buffalo</span>
+                        <span class="mob-level">Lv9</span>
+                        <span class="mob-type-tag blue">Blue Champion</span>
+                    </div>
+                    <div class="mob-meta">
+                        <span class="spawn-time">10:03:27</span>
+                        <span class="mob-area-tag">Cruma Tower</span>
+                    </div>
+                    <div class="mob-stats">
+                        <span>Health: <strong>2,500</strong></span>
+                        <span>Attack: <strong>510</strong></span>
+                        <span>Defense: <strong>310</strong></span>
+                    </div>
+                    <div class="mob-drop">
+                        <div class="drop-item">
+                            <img src="/images/adena-icon.png" alt="Adena" />
+                            <span>132</span>
+                        </div>
+                        <div class="drop-item">
+                            <img src="/images/xp-booster-icon.png" alt="XP" />
+                            <span>340 XP</span>
+                        </div>
+                    </div>
+                    <div class="mob-description">
+                        A wild, charging farm creature.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Invite Player Modal -->
+<div class="modal-overlay" id="invite-modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeInviteModal()" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <h3 class="modal-title">System Players</h3>
+
+        <div class="invite-player-list">
+            <div class="invite-player-entry">
+                <img class="invite-player-banner" src="/images/classes/moonlight-sentinel-banner.jpeg"/>
+                <div class="invite-player-info">
+                    <div class="invite-player-nickname">Leona</div>
+                    <div class="invite-player-meta">Lv 27 </div>
+                    <div class="invite-player-meta">Adena: 9,109</div>
+                    <div class="invite-player-class">
+                        <span class="invite-player-class-label">Class:</span>
+                        <span>Moonlight Sentinel</span>
+                    </div>
+                </div>
+                <form class="invite-player-form" action="" method="post">
+                    <button type="submit" class="btn invite-btn">Invite</button>
+                </form>
+            </div>
+            <div class="invite-player-entry">
+                <img class="invite-player-banner" src="/images/classes/trickster-class-banner.png"/>
+                <div class="invite-player-info">
+                    <div class="invite-player-nickname">Mandarin</div>
+                    <div class="invite-player-meta">Lv 13</div>
+                    <div class="invite-player-meta">Adena: 1,991</div>
+                    <div class="invite-player-class">
+                        <span class="invite-player-class-label">Class:</span>
+                        <span>Trickster</span>
+                    </div>
+                </div>
+                <form class="invite-player-form" action="" method="post">
+                    <button type="submit" class="btn invite-btn">Invite</button>
+                </form>
+            </div>
+            <div class="invite-player-entry">
+                <img class="invite-player-banner" src="/images/classes/phoenix-knight-class-banner.jpeg"/>
+                <div class="invite-player-info">
+                    <div class="invite-player-nickname">Dafny</div>
+                    <div class="invite-player-meta">Lv 13</div>
+                    <div class="invite-player-meta">Adena: 109</div>
+                    <div class="invite-player-class">
+                        <span class="invite-player-class-label">Class:</span>
+                        <span>Phoenix Knight</span>
+                    </div>
+                </div>
+                <form class="invite-player-form" action="" method="post">
+                    <button type="submit" class="btn invite-btn">Invite</button>
+                </form>
+            </div>
+            <div class="invite-player-entry">
+                <img class="invite-player-banner" src="/images/classes/storm-screamer-class-banner.jpeg" />
+                <div class="invite-player-info">
+                    <div class="invite-player-nickname">Marcie</div>
+                    <div class="invite-player-meta">Lv 85</div>
+                    <div class="invite-player-meta">Adena: 679,110</div>
+                    <div class="invite-player-class">
+                        <span class="invite-player-class-label">Class:</span>
+                        <span>Storm Screamer</span>
+                    </div>
+                </div>
+                <form class="invite-player-form" action="" method="post">
+                    <button type="submit" class="btn invite-btn">Invite</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+<script>
+    function openInviteModal() {
+        document.getElementById('invite-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeInviteModal() {
+        document.getElementById('invite-modal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('invite-modal');
+    const closeBtn = document.querySelector('.invite-modal-close');
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeInviteModal();
+        }
+    });
+});
+</script>
+</body>
+</html>

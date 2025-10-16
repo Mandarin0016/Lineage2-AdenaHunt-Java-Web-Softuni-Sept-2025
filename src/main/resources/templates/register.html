@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+
+<div class="register-container">
+  <div class="register-blur"></div>
+  <div class="register-panel">
+    <a href="/" class="close-btn" title="Back to Home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </a>
+    <h1>Create Account</h1>
+    <form action="/register" th:method="POST" th:object="${registerRequest}">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input th:field="*{username}" type="text" id="username" placeholder="Enter your username" required>
+        <div th:if="${#fields.hasErrors('username')}" class="form-error">Invalid username</div>
+      </div>
+
+      <div class="form-group">
+        <div class="password-strength-and-label-wrapper">
+          <label for="password">Password</label>
+          <div class="password-strength">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+        <div class="password-wrapper">
+          <input th:field="*{password}" type="password" id="password" placeholder="Enter your password" required>
+          <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()" id="toggleIcon"></i>
+        </div>
+        <div th:if="${#fields.hasErrors('password')}" class="form-error">Invalid password</div>
+      </div>
+
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input th:field="*{nickname}" type="text" id="nickname" placeholder="Choose a nickname" required>
+        <div th:if="${#fields.hasErrors('nickname')}" class="form-error">Invalid nickname</div>
+      </div>
+
+      <div class="form-divider"></div>
+      <button type="submit" class="btn-primary">Register</button>
+      <p class="switch-link">Already have an account? <a href="">Log In</a></p>
+    </form>
+
+  </div>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+<script>
+  function togglePassword() {
+    const input = document.getElementById("password");
+    const icon = document.getElementById("toggleIcon");
+    const isPassword = input.type === "password";
+    input.type = isPassword ? "text" : "password";
+    icon.classList.toggle("fa-eye");
+    icon.classList.toggle("fa-eye-slash");
+  }
+
+  document.getElementById("password").addEventListener("input", function() {
+  const value = this.value;
+  const bars = document.querySelectorAll(".password-strength .bar");
+
+  let strength = 0;
+  if (value.length > 5) strength++;
+  if (value.length > 8) strength++;
+  if (/[A-Z]/.test(value) && /\d/.test(value)) strength++;
+
+  bars.forEach((bar, index) => {
+    if (index < strength) {
+      bar.classList.add("filled");
+    } else {
+      bar.classList.remove("filled");
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>

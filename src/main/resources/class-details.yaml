@@ -1,0 +1,87 @@
+classes:
+  - playerClass: STORM_SCREAMER
+    healthFactor: 40
+    attackFactor: 18
+    defenseFactor: 6
+    bannerImg: "/images/classes/storm-screamer-class-banner.jpeg"
+    boosters:
+      - name: "+15% Attack"
+        value: 0.15
+        type: ATTACK_BOOSTER
+        icon: "/images/magic-attack-icon.png"
+      - name: "+5% XP Gain"
+        value: 0.05
+        type: XP_BOOSTER
+        icon: "/images/xp-booster-icon.png"
+
+  - playerClass: MOONLIGHT_SENTINEL
+    healthFactor: 35
+    attackFactor: 18
+    defenseFactor: 10
+    bannerImg: "/images/classes/moonlight-sentinel-banner.jpeg"
+    boosters:
+      - name: "+10% Attack"
+        value: 0.1
+        type: ATTACK_BOOSTER
+        icon: "/images/attack-booster-icon.png"
+      - name: "+12% XP Gain"
+        value: 0.12
+        type: XP_BOOSTER
+        icon: "/images/xp-booster-icon.png"
+      - name: "+10% Adena Gain"
+        value: 0.1
+        type: ADENA_BOOSTER
+        icon: "/images/adena-icon.png"
+
+  - playerClass: TRICKSTER
+    healthFactor: 35
+    attackFactor: 20
+    defenseFactor: 6
+    bannerImg: "/images/classes/trickster-class-banner.png"
+    boosters:
+      - name: "+35% Attack"
+        value: 0.35
+        type: ATTACK_BOOSTER
+        icon: "/images/attack-booster-icon.png"
+      - name: "+16% XP Gain"
+        value: 0.16
+        type: XP_BOOSTER
+        icon: "/images/xp-booster-icon.png"
+      - name: "+27% Adena Gain"
+        value: 0.27
+        type: ADENA_BOOSTER
+        icon: "/images/adena-icon.png"
+
+  - playerClass: DREADNOUGHT
+    healthFactor: 45
+    attackFactor: 18
+    defenseFactor: 10
+    bannerImg: "/images/classes/dreadnought-class-banner.jpeg"
+    boosters:
+      - name: "+15% Attack"
+        value: 0.15
+        type: ATTACK_BOOSTER
+        icon: "/images/attack-booster-icon.png"
+      - name: "+20% Adena Gain"
+        value: 0.2
+        type: ADENA_BOOSTER
+        icon: "/images/adena-icon.png"
+
+  - playerClass: PHOENIX_KNIGHT
+    healthFactor: 55
+    attackFactor: 12
+    defenseFactor: 15
+    bannerImg: "/images/classes/phoenix-knight-class-banner.jpeg"
+    boosters:
+      - name: "+15% Defense"
+        value: 0.15
+        type: DEFENSE_BOOSTER
+        icon: "/images/defense-icon.png"
+      - name: "+40% XP Gain"
+        value: 0.4
+        type: XP_BOOSTER
+        icon: "/images/xp-booster-icon.png"
+      - name: "+24% Adena Gain"
+        value: 0.24
+        type: ADENA_BOOSTER
+        icon: "/images/adena-icon.png"

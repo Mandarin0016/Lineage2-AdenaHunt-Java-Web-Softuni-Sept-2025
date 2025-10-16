@@ -1,0 +1,711 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background: none;
+    background-color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    color: #111;
+    height: 100vh;
+}
+
+body::after {
+    content: none;
+}
+
+header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-family: 'Orbitron', sans-serif;
+    gap: 1rem;
+}
+
+.main-content {
+    display: flex;
+    padding: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-width: 1400px;
+    align-self: center;
+    margin-top: auto;
+}
+
+.panel {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* PLAYER INFO PART START */
+.player-name-level-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #1d5dff1f;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.player-nickname {
+    font-size: 1.1rem;
+    color: #1d5dff;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.player-level {
+    font-size: 0.95rem;
+    background-color: #f3f7ff;
+    color: #333;
+    padding: 0.25rem 0.6rem;
+    font-weight: 600;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.player-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 370px;
+    max-width: 370px;
+}
+
+.player-info {
+    background: #fff;
+    border: 1px solid #1d5dff1f;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.image-wrapper img.class-image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.image-wrapper .class-name {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background-color: #1d5dff;
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.class-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.class-stats li {
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.class-abilities {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.abilities-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1d5dff;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.8px;
+}
+
+.class-ability {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f3f7ff;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    color: #1d1d1d;
+}
+
+.class-ability img {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.description {
+    font-size: 0.85rem;
+    color: #333;
+    margin-top: 1rem;
+    line-height: 1.4;
+    align-self: center;
+    font-style: italic;
+}
+
+/* PLAYER INFO PART END */
+
+/* PARTY INFO PART START */
+.party-zone-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    min-width: 400px;
+    max-width: 400px;
+    justify-content: space-between;
+}
+
+.party-box {
+    border: 1px solid #1d5dff1f;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 0;
+}
+
+.farm-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    background: #fff;
+    border: 1px solid #1d5dff1f;
+    height: 96px;
+    background: url('/images/farm-zone-box-bg.png') no-repeat center center/cover;
+}
+
+.farm-box .enter-farm {
+    text-decoration: none;
+    background-color: #1443c9;
+    color: #ffffff;
+    border: 1px solid #1d5dff1f;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background-color 0.4s ease,
+    color 0.3s ease,
+    backdrop-filter 0.4s ease;
+}
+
+.farm-box .enter-farm:hover {
+    background: transparent;
+    backdrop-filter: blur(4px);
+    color: white;
+    border: none;
+}
+
+.party-members {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.party-member-card {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    position: relative;
+    gap: 1rem;
+}
+
+.party-member-card {
+    border-top: 1px solid #1d5dff1f;
+}
+
+.party-banner {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.party-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.85rem;
+}
+
+.party-nickname {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #1d1d1d;
+}
+
+.party-level, .party-adena {
+    color: #555;
+}
+
+.party-role-tag {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    background: #f3f7ff;
+    color: #1d1d1d;
+    font-size: 0.65rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.4rem;
+    text-transform: uppercase;
+}
+
+.party-role-tag.leader {
+    background-color: #ffcf5f;
+}
+
+.party-actions {
+    display: flex;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    padding-bottom: 1.6rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.party-actions .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Red Hat Display', sans-serif;
+    width: 50%;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.party-actions .invite {
+    border: 1px solid #1d5dff;
+    background-color: transparent;
+    color: #1d5dff;
+}
+
+.party-actions .invite:hover {
+    background-color: #1d5dff;
+    color: white;
+}
+
+.party-actions .dismiss {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #1d5dff1f;
+    width: 100%;
+}
+
+.party-actions .dismiss:hover {
+    background-color: #f3f7ff;
+    color: #2a2a2a;
+}
+
+.party-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.party-empty-text {
+    max-width: 520px;
+}
+
+.empty-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: #1d5dff;
+    text-align: center;
+    margin-bottom: 0.6rem;
+}
+
+.party-rules {
+    list-style: decimal inside;
+    padding-left: 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+}
+
+.party-rules li {
+    margin-bottom: 0.4rem;
+}
+
+.party-action-form {
+    width: 50%;
+}
+
+/* PARTY INFO PART END */
+
+.section-title {
+    font-family: 'Orbitron';
+    font-size: 1.1rem;
+    margin: 0;
+    color: #1d5dff;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: transparent;
+    font-size: 0.8rem;
+    color: #1d5dff;
+    margin-top: auto;
+    z-index: 2;
+    font-family: 'Red Hat Display', sans-serif;
+    opacity: 0.8;
+    letter-spacing: 0.02em;
+}
+
+/*LOGOUT BTN START */
+.logout-button {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1rem;
+    color: #1d5dff;
+    background-color: transparent;
+    padding: 0.4rem 1rem;
+    text-decoration: none;
+    border: 1px solid #1d5dff;
+    transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #1d5dff;
+    color: #fff;
+}
+
+/*LOGOUT BTN END*/
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* MODAL CONTENT */
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.modal-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #1d5dff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #1d5dff;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* PLAYER ENTRY */
+.invite-player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.invite-player-entry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid #1d5dff1f;
+    border-radius: 0.5rem;
+    background: #f9fafe;
+}
+
+.invite-player-banner {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.invite-player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.85rem;
+}
+
+.invite-player-nickname {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #1d1d1d;
+}
+
+.invite-player-meta {
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.invite-player-class {
+    font-size: 0.85rem;
+    color: #1d5dff;
+    font-weight: 500;
+}
+
+.invite-player-class-label {
+    color: #555;
+}
+
+.invite-player-form {
+    margin-left: auto;
+}
+
+.invite-btn {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: #1d5dff;
+    border: 1px solid #1d5dff;
+    cursor: pointer;
+    font-family: 'Red Hat Display', sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.invite-btn:hover {
+    background-color: #1d5dff;
+    color: white;
+}
+
+/*SPAWNED MOBS START */
+.mob-log-container {
+    border: 1px solid #1d5dff1f;
+    display: flex;
+    flex-direction: column;
+    min-width: 380px;
+    padding: 0.6rem 1.5rem;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.mob-entry {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1rem;
+    padding-bottom: 0rem;
+    border-top: 1px solid #1d5dff1f;
+    align-items: flex-start;
+}
+
+.mob-entry:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.mob-image {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    filter: brightness(1.5);
+}
+
+.mob-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    color: #1d1d1d;
+    flex: 1;
+}
+
+.mob-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+
+.mob-name {
+    font-size: 1rem;
+}
+
+.mob-level {
+    color: #666;
+    font-weight: 500;
+}
+
+.mob-type-tag {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.mob-type-tag.common {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.mob-type-tag.blue {
+    background-color: #c6dbff;
+    color: #002766;
+}
+
+.mob-type-tag.red {
+    background-color: #ffc9c9;
+    color: #990000;
+}
+
+.mob-meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #555;
+    flex-wrap: wrap;
+}
+
+.spawn-time {
+    background-color: #f2f2f2;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.mob-area-tag {
+    background-color: #e6f1ff;
+    color: #1e3a8a;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.mob-stats {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.mob-stats span {
+    white-space: nowrap;
+}
+
+.mob-drop {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.4rem;
+    align-items: center;
+}
+
+.drop-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: #1a1a1a;
+}
+
+.drop-item img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.mob-description {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+.player-adena {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.4rem 1rem;
+    color: #333;
+    font-family: 'Red Hat Display', sans-serif;
+    border: 1px solid #1d5dff1f;
+
+}
+
+.player-adena img {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}

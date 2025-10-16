@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Class</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/choose-class.css">
+</head>
+<body>
+<div class="class-select-wrapper">
+    <div class="page-title-wrapper">
+        <h1 class="page-title">CHOOSE YOUR CLASS</h1>
+        <p class="page-subtitle">Each path grants you unique powers and bonuses</p>
+    </div>
+
+    <a href="/logout" class="logout-button">Logout</a>
+
+    <div class="class-select-container">
+        <button class="arrow left" onclick="prevClass()">&#10094;</button>
+
+        <div class="class-carousel">
+            <!-- Class Card 1 -->
+            <div class="class-card">
+                <div class="card-header">
+                    <div class="image-wrapper">
+                        <div class="class-icon">
+                            <img src="/images/classes/mage-icon.svg" class="archer-icon" alt="Archer Icon"/>
+                        </div>
+                        <img class="class-image" src="/images/classes/storm-screamer-class-banner.jpeg"/>
+                        <div class="class-type-label mage">Mage</div>
+                    </div>
+                </div>
+                <ul class="class-stats">
+                    <li>
+                        <span>Health</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Strength</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Defense</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="class-abilities">
+                    <div class="abilities-label">Booster Abilities</div>
+                    <div class="class-ability">
+                        <img src="/images/xp-booster-icon.png" alt="XP Icon">
+                        <span>+5% XP Gain</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/magic-attack-icon.png" alt="Attack Icon">
+                        <span>+15% Attack</span>
+                    </div>
+                </div>
+                <form action="" method="">
+                    <button type="submit" class="btn-primary">Storm Screamer</button>
+                </form>
+            </div>
+
+            <!-- Class Card 2 -->
+            <div class="class-card active">
+                <div class="card-header">
+                    <div class="image-wrapper">
+                        <div class="class-icon">
+                            <img src="/images/classes/archer-icon.svg" class="archer-icon" alt="Archer Icon"/>
+                        </div>
+                        <img class="class-image" src="/images/classes/moonlight-sentinel-banner.jpeg"/>
+                        <div class="class-type-label archer">Archer</div>
+                    </div>
+                </div>
+                <ul class="class-stats">
+                    <li>
+                        <span>Health</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Strength</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Defense</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="class-abilities">
+                    <div class="abilities-label">Booster Abilities</div>
+                    <div class="class-ability">
+                        <img src="/images/xp-booster-icon.png" alt="XP Icon">
+                        <span>+12% XP Gain</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/attack-booster-icon.png" alt="Attack Icon">
+                        <span>+10% Attack</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/adena-icon.png" alt="Attack Icon">
+                        <span>+10% Adena Gain</span>
+                    </div>
+                </div>
+                <form action="" method="">
+                    <button type="submit" class="btn-primary">Moonlight Sentinel</button>
+                </form>
+            </div>
+
+            <!-- Class Card 3 -->
+            <div class="class-card">
+                <div class="card-header">
+                    <div class="image-wrapper">
+                        <div class="class-icon">
+                            <img src="/images/classes/defense-icon.svg" class="archer-icon" alt="Archer Icon"/>
+                        </div>
+                        <img class="class-image" src="/images/classes/phoenix-knight-class-banner.jpeg"/>
+                        <div class="class-type-label support">Support</div>
+                    </div>
+                </div>
+                <ul class="class-stats">
+                    <li>
+                        <span>Health</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Strength</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Defense</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="class-abilities">
+                    <div class="abilities-label">Booster Abilities</div>
+                    <div class="class-ability">
+                        <img src="/images/xp-booster-icon.png" alt="XP Icon">
+                        <span>+40% XP Gain</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/defense-icon.png" alt="Attack Icon">
+                        <span>+15% Defense</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/adena-icon.png" alt="Attack Icon">
+                        <span>+24% Adena Gain</span>
+                    </div>
+                </div>
+                <form action="" method="">
+                    <button type="submit" class="btn-primary">Phoenix Knight</button>
+                </form>
+            </div>
+
+            <!-- Class Card 4 -->
+            <div class="class-card">
+                <div class="card-header">
+                    <div class="image-wrapper">
+                        <div class="class-icon">
+                            <img src="/images/classes/archer-icon.svg" class="archer-icon" alt="Archer Icon"/>
+                        </div>
+                        <img class="class-image" src="/images/classes/trickster-class-banner.png"/>
+                        <div class="class-type-label archer">Archer</div>
+                    </div>
+                </div>
+                <ul class="class-stats">
+                    <li>
+                        <span>Health</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Strength</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Defense</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="class-abilities">
+                    <div class="abilities-label">Booster Abilities</div>
+                    <div class="class-ability">
+                        <img src="/images/xp-booster-icon.png" alt="XP Icon">
+                        <span>+16% XP Gain</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/attack-booster-icon.png" alt="Attack Icon">
+                        <span>+35% Attack</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/adena-icon.png" alt="Attack Icon">
+                        <span>+27% Adena Gain</span>
+                    </div>
+                </div>
+                <form action="" method="">
+                    <button type="submit" class="btn-primary">Trickster</button>
+                </form>
+            </div>
+
+            <!-- Class Card 4 -->
+            <div class="class-card">
+                <div class="card-header">
+                    <div class="image-wrapper">
+                        <div class="class-icon">
+                            <img src="/images/classes/attack-icon.svg" class="archer-icon" alt="Archer Icon"/>
+                        </div>
+                        <img class="class-image" src="/images/classes/dreadnought-class-banner.jpeg"/>
+                        <div class="class-type-label melee">Melee</div>
+                    </div>
+                </div>
+                <ul class="class-stats">
+                    <li>
+                        <span>Health</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Strength</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Defense</span>
+                        <div class="stat-bar">
+                            <span class="bar filled"></span>
+                            <span class="bar filled"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="class-abilities">
+                    <div class="abilities-label">Booster Abilities</div>
+                    <div class="class-ability">
+                        <img src="/images/attack-booster-icon.png" alt="Attack Icon">
+                        <span>+15% Attack</span>
+                    </div>
+                    <div class="class-ability">
+                        <img src="/images/adena-icon.png" alt="Attack Icon">
+                        <span>+20% Adena Gain</span>
+                    </div>
+                </div>
+                <form action="" method="">
+                    <button type="submit" class="btn-primary">Dreadnought</button>
+                </form>
+            </div>
+        </div>
+
+        <button class="arrow right" onclick="nextClass()">&#10095;</button>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+<script src="/js/choose-class.js"></script>
+</body>
+</html>

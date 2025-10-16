@@ -1,0 +1,51 @@
+body {
+  background: url('/images/bg.jpg') no-repeat center center/cover;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 66vh;
+  background: linear-gradient(to top, rgba(14, 15, 26, 0.9), rgba(14, 15, 26, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
